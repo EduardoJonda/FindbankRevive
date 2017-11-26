@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * This is our model class and it corresponds to Country table in database
  */
 @Entity
-@Table(name="AGENTES")
+@Table(name="agentes")
 public class Agentes{
 	
 	@Id
@@ -50,21 +50,17 @@ public class Agentes{
 		super();
 	}
 	  
-	public Agentes(int id, String nombre, String direccion, float lat, float lng, String tipo, int sistema,
-			int seguridad, String horario, String descripcion) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.lat = lat;
-		this.lng = lng;
-		this.tipo = tipo;
-		this.sistema = sistema;
-		this.seguridad = seguridad;
-		this.horario = horario;
-		this.descripcion = descripcion;
-	}
 	 
+	 
+	@Override
+	public String toString() {
+		return "Agentes [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", lat=" + lat + ", lng=" + lng
+				+ ", tipo=" + tipo + ", sistema=" + sistema + ", seguridad=" + seguridad + ", horario=" + horario
+				+ ", descripcion=" + descripcion + "]";
+	}
+
+
+
 	public int getId() {
 		return id;
 	}

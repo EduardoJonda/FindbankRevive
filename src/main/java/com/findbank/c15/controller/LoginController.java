@@ -2,6 +2,7 @@ package com.findbank.c15.controller;
   
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,6 +60,7 @@ public class LoginController {
     	     if(usuario.getTipo().equals("admi")) {
     	    	 mav = new ModelAndView("redirect:/administrador");
     	      }else {
+    	    	  
     	    	   mav = new ModelAndView("redirect:/welcome");
     	      }
      
@@ -70,10 +72,13 @@ public class LoginController {
     return mav;
   }
   
-  @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+  @RequestMapping(value = "/welcome", method = RequestMethod.GET, headers = "Accept=application/json")
    public ModelAndView showWelcome(HttpServletRequest request, HttpServletResponse response) {
      ModelAndView mav = new ModelAndView("welcome"); 
+     
+    List<Agentes> listOfAgentes = agentesService.getAllAgentes();
     mav.addObject("agentes", new Agentes());
+    mav.addObject("listOfAgentes", listOfAgentes);
      return mav;
    }
     

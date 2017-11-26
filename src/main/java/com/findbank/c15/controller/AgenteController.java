@@ -3,18 +3,27 @@ package com.findbank.c15.controller;
 
 import java.util.List;
 
-import com.findbank.c15.model.Agentes; 
+import com.findbank.c15.dao.UsuarioDaoImpl;
+import com.findbank.c15.model.Agentes;
+import com.findbank.c15.model.Usuario;
 import com.findbank.c15.service.AgentesService;
+import com.findbank.c15.service.UsuarioService; 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable; 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod; 
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView; 
 
 @Controller
 public class AgenteController {
+	
+	@Autowired
+	UsuarioService usuarioService;
 	
 	@Autowired
 	AgentesService agentesService;
@@ -26,7 +35,52 @@ public class AgenteController {
 		model.addAttribute("agentes", new Agentes());
 		model.addAttribute("listOfAgentes", listOfAgentes); 
 		return "welcomeadmi";
-	} 
+	}  
+	
+	@RequestMapping(value = "/administrador2", method = RequestMethod.GET)
+	public String getUsers(Model model) {
+  
+		    model.addAttribute("usuario", new Usuario());
+			model.addAttribute("usuarios", usuarioService.findAll());
+		 
+		return "welcomeadmi2";
+	}	
+	
+	//updateUsuario
+	@RequestMapping(value = "/updateUsuario/{id}", method = RequestMethod.GET)
+	public String updateUser(@PathVariable("id") int id,Model model) {
+		 model.addAttribute("usuario", this.usuarioService.find(id)); 
+	        model.addAttribute("usuarios", this.usuarioService.findAll());
+	       // ModelAndView mav = new ModelAndView();
+	    	model.addAttribute("textomodal", "verdadero");
+	        return "welcomeadmi2";
+	}
+	
+	@RequestMapping(value = "/deleteUsuario/{id}", method = RequestMethod.GET)
+	public String deleteUser(@PathVariable("id") int id) {
+		usuarioService.delete(id);
+		 return "redirect:/administrador2";
+
+	}
+	
+	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
+	public String addAgente(@ModelAttribute("usuario") Usuario usuarios) {	
+		if(usuarios.getId()==0)
+		{ 
+			usuarioService.create(usuarios.getNombre(), usuarios.getEmail(), usuarios.getPassword(), usuarios.getTipo());
+		}
+		else
+		{	 
+			usuarioService.update(usuarios.getId(),usuarios.getNombre(), usuarios.getEmail(), usuarios.getPassword(),usuarios.getTipo());
+		}
+		
+		return "redirect:/administrador2";
+	}
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/agente/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public Agentes getAgenteById(@PathVariable int id) {

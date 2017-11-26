@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -70,7 +70,7 @@
         <hr>
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="home">
+          <a class="nav-link" href="welcome">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Mis Agentes</span>
           </a>
@@ -158,7 +158,9 @@
                                 <h4 class="text-center">La Merced</h4>
                            
                                   <table>
-                                                                   
+                                   <tr>
+                                    <td height="10px"></td> 
+                                   </tr>               
                                   <tr>
                                     <td>Dirección :</td>
                                     <td>Valle luz, calle 123 etap 2lt 10A</td> 
@@ -192,23 +194,115 @@
                 </div> <!-- end card -->
             </div> <!-- end card-container -->
         </div> <!-- end col sm 3 -->
- 
-
- <div class="col-md-4 col-sm-6">
+        
+        <!-- recarga todos los agentes en tarjetas-->
+         <c:if test="${!empty listOfAgentes}">
+         <c:forEach items="${listOfAgentes}" var="agentes">
+         <div class="col-md-4 col-sm-6">
              <div class="card-container manual-flip">
                 <div class="card">
                     <div class="front">
-                        <div class="cover"> 
-                      
+                        <div class="cover">
+                          <img class="" src="<c:url value="/resources/img/rotating_card_thumb.png"/>"/> 
                         </div>
                         <div class="user">
-                           <a class="nav-link" data-toggle="modal" data-target="#crearCardModal" > 
+                             <img class="img-circle" src="<c:url value="/resources/img/rotating_card_profile2.png"/>"/> 
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">${agentes.nombre}</h3>
+                                <p class="profession">${agentes.tipo}</p>
+                                <p class="text-center"></p>
+                            </div>
+                            <div class="footer">
+                                <button class="btn btn-simple" onclick="rotateCard(this)">
+                                    <i class="fa fa-mail-forward"></i> Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">Detalles</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h4 class="text-center">${agentes.descripcion}</h4>
+                           
+                                  <table>
+                                            
+                                   <tr>
+                                    <td height="10px"></td> 
+                                   </tr>                       
+                                  <tr>
+                                    <td>Dirección :</td>
+                                    <td>${agentes.direccion}</td> 
+                                  </tr> 
+                                  <tr>
+                                    <td>Horario :</td>
+                                    <td>${agentes.horario}</td> 
+                                  </tr>
+                                   
+                                  <tr>
+                                    <td>Operatividad :</td>
+                                    
+                                  </tr>
+                                   <tr>  
+                                    <td><input type="radio" name="OpNegativo" > Activo</td>
+                                    <td><input type="radio" name="OpPositivo" > Inactivo</td>
+                                  </tr>
+                                  </table>  
+
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
+                                <i class="fa fa-reply"></i> Back
+                            </button> 
+                              <button class="btn btn-secondary" rel="Find " title="Flip Card" onclick="">
+                                <i class="fa fa-pencil fa-fw"></i> Modificar
+                            </button> 
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col sm 3 -->
+        
+        </c:forEach>
+         </c:if>
+        <!-- recarga todos los agentes en tarjetas :fin-->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+ 
+
+ 			<div class="col-md-4 col-sm-6" >
+                <div class="card-container manual-flip" >
+                    <div class="card" >
+                    <div class="front"  >
+                        <div class="cover" style="background-color:#e9ecef;"  > 
+                      
+                        </div>
+                         <div class="user"  style="background-color:white;" >
+                           <a class="nav-link" data-toggle="modal" data-target="#crearCardModal"  > 
                             <img id="imgadd" src="<c:url value="/resources/img/addimg.png"/>"/>
                           </a>
                         </div>
                     </div> <!-- end front panel -->  </div> <!-- end back panel -->
                 </div> <!-- end card -->
             </div> <!-- end card-container -->
+            
         </div> <!-- end col sm 3 -->
  
 

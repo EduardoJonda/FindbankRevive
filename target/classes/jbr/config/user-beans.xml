@@ -10,6 +10,7 @@
 
 	<context:component-scan base-package="com.findbank.c15" />
 	<context:annotation-config />
+	
 
 	<bean id="usuarioService" class="com.findbank.c15.service.UsuarioServiceImpl" />
 	<bean id="usuarioDao" class="com.findbank.c15.dao.UsuarioDaoImpl" />

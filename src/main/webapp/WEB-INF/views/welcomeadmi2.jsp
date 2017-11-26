@@ -47,17 +47,17 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
          
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Agentes">
           <a class="nav-link" href="/c15/administrador">
-            <i class="fa fa-fw fa-area-chart" style="font-size:28px;"></i>
-            <span class="nav-link-text"  style="font-size:20px;">Agentes</span>
+            <i class="fa fa-fw fa-area-chart" style="font-size:20px;"></i>
+            <span class="nav-link-text"  style="font-size:14px;">Agentes</span>
           </a>
         </li>
         
-         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Usurarios">
           <a class="nav-link" href="/c15/administrador2">
-              <i class="fa fa-user-o" aria-hidden="true" style="font-size:20px;"></i> 
-                <span class="nav-link-text" style="font-size:14px;">Usuario</span>
+          <i class="fa fa-user-o" aria-hidden="true" style="font-size:28px;"></i> 
+            <span class="nav-link-text" style="font-size:22px;">Usuario</span>
           </a>
         </li>
         
@@ -87,9 +87,9 @@
         <li class="breadcrumb-item">
           <a href="/administrador"   style="font-size:15px;"><strong>Find Bank</strong></a>
         </li>
-        <li class="breadcrumb-item active"  style="font-size:15px;"><strong>Agentes</strong></li>
+        <li class="breadcrumb-item active"  style="font-size:15px;"><strong>Usuario</strong></li>
       </ol>
-      <h1>Agentes</h1>
+      <h1>Usuario</h1>
       <hr>
       <!-- Formulario de edit modal-->
    <div class="modal fade" id="crearCardModal" tabindex="-1" role="dialog" aria-labelledby="eModalLabel" aria-hidden="false">
@@ -99,14 +99,14 @@
    
       <div class="modal-header">
        
-       <center> <h3 class="modal-title" id="eModalLabel">Editar Agente</h3>  
+       <center> <h3 class="modal-title" id="eModalLabel">Editar Usuario</h3>  
         </button> </center>
       </div>
       </center>
       <div class="modal-body"> 
     
        <!-- dentro del Modal con formulario--> 
-        <form:form method="post" modelAttribute="agentes" action="/c15/addAgente">
+        <form:form method="post" modelAttribute="usuario" action="/c15/addUser">
 	<table class="table">
 		 
 		<tr>
@@ -115,39 +115,17 @@
           <td><form:input class="form-control" path="nombre" size="30" maxlength="30"></form:input></td>
         </tr>
 		<tr>
-		  <td><form:label path="direccion">Direccion:</form:label></td>
-          <td><form:input class="form-control" path="direccion" size="30" maxlength="30"></form:input></td>
+		  <td><form:label path="email">Email:</form:label></td>
+          <td><form:input class="form-control" path="email" size="30" maxlength="30"></form:input></td>
 		</tr>
 		<tr>
-		  <td><form:label path="lat">lat:</form:label></td>
-          <td><form:input class="form-control" path="lat" size="30" maxlength="30"></form:input></td>
+		  <td><form:label path="password">Password</form:label></td>
+          <td><form:input class="form-control" path="password" size="30" maxlength="30"></form:input></td>
 		</tr>
 		<tr>
-		  <td><form:label path="lng">lng:</form:label></td>
-          <td><form:input class="form-control" path="lng" size="30" maxlength="30"></form:input></td>
-		</tr>
-		<tr>
-		  <td><form:label path="tipo">tipo:</form:label></td>
+		  <td><form:label path="tipo">Tipo</form:label></td>
           <td><form:input class="form-control" path="tipo" size="30" maxlength="30"></form:input></td>
-		</tr>
-		<tr>
-		  <td><form:label path="sistema">sistema:</form:label></td>
-          <td><form:input class="form-control" path="sistema" size="30" maxlength="30"></form:input></td>
-		</tr>
-		<tr>
-		  <td><form:label path="seguridad">seguridad:</form:label></td>
-          <td><form:input class="form-control" path="seguridad" size="30" maxlength="30"></form:input></td>
-		</tr>
-		<tr>
-		  <td><form:label path="horario">horario:</form:label></td>
-          <td><form:input class="form-control" path="horario" size="30" maxlength="30"></form:input></td>
-		</tr>
-		<tr>
-		  <td><form:label path="descripcion">descripcion:</form:label></td>
-          <td><form:input class="form-control" path="descripcion" size="30" maxlength="30"></form:input></td>
-		</tr> 
-		  
-		
+		</tr>  
       </div>
 	</table> 
 	
@@ -171,52 +149,41 @@
       <!--tabla de agentes-->
       <div class="card mb-3">
         <div class="card-header">
-          <i style="font-size:17px;" class="fa fa-table"></i><strong style="font-size:16px;"> Lista de Agentes</strong></div>
+          <i style="font-size:17px;" class="fa fa-table"></i><strong style="font-size:16px;"> Lista de Usuarios</strong></div>
         <div class="card-body">
           <div class="table-responsive">
-           <c:if test="${!empty listOfAgentes}">
+          
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"  style="font-size:16px;">
               <thead>
                 <tr>
                   <th style="font-size:20px;">Id</th>
                   <th style="font-size:20px;">Nombre</th>
-                  <th style="font-size:20px;">Dirección</th>
-                  <th style="font-size:20px;">Lat</th>
-                  <th style="font-size:20px;">Lng</th>
-                  <th style="font-size:20px;">Tipo</th>
-                  <th style="font-size:20px;">Sistema</th>
-                  <th style="font-size:20px;">Seguridad</th>
-                  <th style="font-size:20px;">Horario</th>
-                  <th style="font-size:20px;">Descripcion</th>
+                  <th style="font-size:20px;">Email</th>
+                  <th style="font-size:20px;">Password</th>
+                  <th style="font-size:20px;">Tipo</th> 
                   <th colspan="2"></th> 
                 </tr>
               </thead>
                
               <tbody> 
 
-                <c:forEach items="${listOfAgentes}" var="agentes">
+                <c:forEach var="emp" items="${usuarios}">
 				<tr>
-					<td style="font-size:16px;">${agentes.id}</td>
-					<td style="font-size:16px;">${agentes.nombre}</td>
-					<td style="font-size:16px;">${agentes.direccion}</td>
-					<td style="font-size:16px;">${agentes.lat}</td>
-					<td style="font-size:16px;">${agentes.lng}</td>
-					<td style="font-size:16px;">${agentes.tipo}</td>
-					<td style="font-size:16px;">${agentes.sistema}</td>
-					<td style="font-size:16px;">${agentes.seguridad}</td>
-					<td style="font-size:16px;">${agentes.horario}</td>
-					<td style="font-size:16px;">${agentes.descripcion}</td>
+					<td style="font-size:16px;">${emp.id}</td>
+					<td style="font-size:16px;">${emp.nombre}</td>
+					<td style="font-size:16px;">${emp.email}</td>
+					<td style="font-size:16px;">${emp.password}</td>
+					<td style="font-size:16px;">${emp.tipo}</td> 
                   <!--<td><button class="btn btn-secondary">Modificar</button></td>  <td><button type="button"  class="btn btn-info btn-lg" data-toggle="modal" data-target="#crearCardModal">Edit</button></td>
                   <td><button class="btn btn-danger">Eliminar</button></td>-->
-                  <td  style="font-size:20px;"><a class="btn btn-secondary" href="<c:url value='/updateAgente/${agentes.id}' />" ><strong style="font-size:16px;" >Editar</strong></a></td>
+                  <td  style="font-size:20px;"><a class="btn btn-secondary" href="<c:url value='/updateUsuario/${emp.id}' />" ><strong style="font-size:16px;" >Editar</strong></a></td>
                   
-			      <td  style="font-size:16px;"><a class="btn btn-danger" href="<c:url value='/deleteAgente/${agentes.id}' />" ><strong style="font-size:16px;" >Delete</strong></a></td>
+			      <td  style="font-size:16px;"><a class="btn btn-danger" href="<c:url value='/deleteUsuario/${emp.id}' />" ><strong style="font-size:16px;" >Delete</strong></a></td>
                 </tr>
 				</c:forEach>
                 
               </tbody>
-            </table>
-            </c:if>
+            </table> 
           </div>
                       
         </div>

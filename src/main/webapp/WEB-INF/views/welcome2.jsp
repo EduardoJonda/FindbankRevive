@@ -42,9 +42,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-         
+      
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="home">
+          <a class="nav-link" href="welcome">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Mis Agentes</span>
           </a>
@@ -73,6 +73,9 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
+       <ol >
+    <br/> <br/>
+      </ol>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="welcome">Find Bank</a>
