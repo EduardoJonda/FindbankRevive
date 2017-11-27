@@ -3,6 +3,9 @@ package com.findbank.c15.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.findbank.c15.dao.UsuarioDaoImpl;
 import com.findbank.c15.model.Agentes;
 import com.findbank.c15.model.Usuario;
@@ -78,7 +81,15 @@ public class AgenteController {
 	}
 	
 	
-	
+	  @RequestMapping(value = "/welcome", method = RequestMethod.GET, headers = "Accept=application/json")
+	   public ModelAndView showWelcome(HttpServletRequest request, HttpServletResponse response) {
+	     ModelAndView mav = new ModelAndView("welcome"); 
+	     
+	    List<Agentes> listOfAgentes = agentesService.getAllAgentes();
+	    mav.addObject("agentes", new Agentes());
+	    mav.addObject("listOfAgentes", listOfAgentes);
+	     return mav;
+	   }
 	
 	
 	
