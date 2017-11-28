@@ -91,19 +91,7 @@ public class LoginController {
   
    
    
-   @RequestMapping(value = "/addAgenteUser", method = RequestMethod.POST, headers = "Accept=application/json")
- 	public String addCountry(@ModelAttribute("agentes") Agentes agentes) {	
- 		if(agentes.getId()==0)
- 		{
- 		agentesService.addAgentes(agentes);
- 		}
- 		else
- 		{	
- 		agentesService.updateAgentes(agentes);
- 		}
- 		
- 		return "redirect:/welcome";
- 	}
+  
   
   
   @RequestMapping(value = "/welcome2", method = RequestMethod.GET)

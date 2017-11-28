@@ -14,20 +14,20 @@
   
 <link rel="stylesheet" href="<c:url value="/resources/css/rotating-card.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/css/font-awesome.min.css"/>"> 
-
+<link rel="stylesheet" href="<c:url value="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"/>"> 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Bienvenido a Find Bank</title>
   <!-- Bootstrap core CSS--> 
+   
   
-  
-  <link rel="stylesheet" href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css"/>">
+  <link rel="stylesheet" href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>">
   <link rel="stylesheet" href="<c:url value="/resources/vendor/font-awesome/css/font-awesome.min.css"/>">
   <link rel="stylesheet" href="<c:url value="/resources/css/sb-admin.css"/>">
   
-   <style type="text/css"> 
+   <style type="text/css">  
 #cajapadre { 
   display: flex;
   justify-content: center;
@@ -125,6 +125,7 @@
       <hr>
       <!-- Icon Cards-->
       <!--cart inicio-->
+  
       <div class="row">  
        <div class="col-md-4 col-sm-6">
              <div class="card-container manual-flip">
@@ -228,8 +229,8 @@
                         <div class="content">
                             <div class="main">
                                 <h4 class="text-center">${agentes.descripcion}</h4>
-                           
-                                  <table>
+                           <center>
+                                  <table >
                                             
                                    <tr>
                                     <td height="10px"></td> 
@@ -238,20 +239,51 @@
                                     <td>Dirección :</td>
                                     <td>${agentes.direccion}</td> 
                                   </tr> 
+                                   <tr>
+                                    <td><br></td>
+                                    
+                                  </tr>
                                   <tr>
                                     <td>Horario :</td>
                                     <td>${agentes.horario}</td> 
                                   </tr>
-                                   
+                                   <tr>
+                                    <td><br></td> 
+                                  </tr> 
                                   <tr>
                                     <td>Operatividad :</td>
+                                      <td><input type="hidden" id="agesistem" value=${agentes.sistema} ></></td>
+                                    <td>
+                                    <input id=${agentes.id} type="checkbox" data-toggle="toggle" data-on="Activo" data-off="Desactivo" data-onstyle="success" data-offstyle="danger"">
+                                    </td>
+                                       <td><a width="10px" href="<c:url value='/editarAgenteUser/${agentes.id}' />" ><button class="btn btn-secondary" rel="Find " title="Editar">
+                                <i class="fa fa-pencil fa-fw"></i> Modificar
+                            </button> </a></td>
+                         
                                     
-                                  </tr>
-                                   <tr>  
-                                    <td><input type="radio" name="OpNegativo" > Activo</td>
-                                    <td><input type="radio" name="OpPositivo" > Inactivo</td>
-                                  </tr>
+                                  </tr>  
                                   </table>  
+</center>
+ <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
+         <script src="<c:url value="https://code.jquery.com/jquery-3.2.1.slim.min.js"/>"></script>
+    <script src="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"/>"></script>
+         <script src="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"/>"></script>
+     <script src="<c:url value="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"/>"></script>
+                             <script> 				
+                             var variable1 = ${agentes.sistema};
+								  if(variable1==1){
+									  var variable = ${agentes.id};
+									  $("#${agentes.id}").bootstrapToggle()
+									 $("#${agentes.id}").bootstrapToggle('on')
+									  
+								  }else{
+									  $("#${agentes.id}").bootstrapToggle('off'); 
+								  }
+								  $("#${agentes.id}").bootstrapToggle('disable')
+								 
+							</script>
+
+
 
                             </div>
                         </div>
@@ -259,9 +291,7 @@
                             <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
                                 <i class="fa fa-reply"></i> Back
                             </button> 
-                              <button class="btn btn-secondary" rel="Find " title="Flip Card" onclick="">
-                                <i class="fa fa-pencil fa-fw"></i> Modificar
-                            </button> 
+                               
                         </div>
                     </div> <!-- end back panel -->
                 </div> <!-- end card -->
@@ -274,7 +304,7 @@
         
         
         
-        
+            <input type="hidden" id="txt" value=${textomodal} ></>
         
         
         
@@ -337,7 +367,7 @@
       </div>
     </div>
   <!-- crear card Modal--> 
-   <div class="modal fade" id="crearCardModal" tabindex="-1" role="dialog" aria-labelledby="eModalLabel" aria-hidden="true">
+   <div class="modal fade" id="crearCardModal" tabindex="-1" role="dialog" aria-labelledby="eModalLabel" aria-hidden="false">
   <div class="modal-dialog" role="document">
   
   
@@ -432,21 +462,71 @@
   </div>
 </div>
 
+
+    <!-- Formulario de edit modal-->
+   <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  
+   <div class="modal-content" id="modalcontenido" >
+   
+      <div class="modal-header">
+       
+       <center> <h3 class="modal-title" id="exampleModalLabel4">Editar Agente</h3>  
+        </button> </center>
+      </div>
+      </center>
+      <div class="modal-body"> 
+    
+       <!-- dentro del Modal con formulario--> 
+       <form:form method="post" modelAttribute="agentes" action="/c15/addAgenteUser">
+	<table class="table"> 
+		<tr>
+		<form:hidden path="id" />
+          <td><form:hidden path="nombre"/></td>
+           <td><form:hidden path="direccion"/></td>
+           <td><form:hidden path="lat"/></td>
+		  <td><form:hidden path="lng"/></td>
+          <td><form:hidden path="tipo"/></td> 
+           <td><form:hidden path="seguridad"/></td>
+           <td><form:hidden path="horario"/></td>
+           <td><form:hidden path="descripcion"/></td> 
+		</tr> 
+		<tr>
+		  <td><form:label path="sistema">Sistema:</form:label></td>
+          <td><form:input class="form-control" path="sistema" size="30" maxlength="30"></form:input></td>
+		</tr> 
+		  
+		
+      </div>
+	</table> 
+	
+	
+	 <div class="modal-footer">
+      <input type="submit" class="btn btn-primary" value="Aceptar" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div> 
+        
+</form:form>
+ 
+</div>
+     
+    </div>
+  </div>
+</div>
+
+
     <!-- Bootstrap core JavaScript-->
-    <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
-    <script src="<c:url value="/resources/vendor/popper/popper.min.js"/>"></script>
-    <script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
+
+      
+         
+    
+    
 
     
-    <!-- Core plugin JavaScript-->
-     <script src="<c:url value="/resources/vendor/jquery/jquery-easing/jquery.easing.min.js"/>"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="<c:url value="/resources/js/sb-admin.min.js"/>"></script> 
-  </div>
-
-<script src="<c:url value="/resources/js/jquery-1.10.2.js"/>"></script> 
-<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>  
-
+    <!-- Core plugin JavaScript--> 
+    <!-- Custom scripts for all pages--> 
+     
+  
 <script type="text/javascript">
     $().ready(function(){
         $('[rel="tooltip"]').tooltip();
@@ -462,6 +542,7 @@
     }
  
 </script>
+
 <script>
     var marker;          //variable del marcador
     var coords = {};    //coordenadas obtenidas con la geolocalización
@@ -513,6 +594,12 @@
     }
     // Carga de la libreria de google maps 
   </script>
+  <script>
+  if($("#txt").val()=='verdadero'){
+	    $('#exampleModal4').modal('show'); 
+	    }   
+   
+  </script>
 <script>
 // seleccionamos el enlace 
 var boton = document.getElementById("boton"); 
@@ -524,7 +611,7 @@ boton.onclick = function(e) {
     var s = document.createElement("script");
     // indicamos en el atributo src el fichero que quieres cargar
     //s.src = "https://maps.googleapis.com/maps/api/js?callback=initMap"; 
-    s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCUtPyzBRpipnztN8w9nFA88QRBKbJp7ak&callback=initMap";
+    s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC0e42jFwmuaIqCQbYvpOfZN86ZsWpLd24&callback=initMap";
     // lo añadimos al documento (y se ejecuta automaticamente)
     document.querySelector("body").appendChild(s);
     // borra el script del documento (para evitar basura si se ejecuta multiples veces)

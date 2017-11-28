@@ -211,7 +211,7 @@ boton.onclick = function(e) {
     // creamos una etiqueta script
     var s = document.createElement("script");
     // indicamos en el atributo src el fichero que quieres cargar  
-    s.src = "<c:url value="/resources/js/callback=initMap.js"/>";
+    s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC0e42jFwmuaIqCQbYvpOfZN86ZsWpLd24&callback=initMap";
     // lo añadimos al documento (y se ejecuta automaticamente)
     document.querySelector("body").appendChild(s);
     // borra el script del documento (para evitar basura si se ejecuta multiples veces)

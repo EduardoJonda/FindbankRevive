@@ -80,7 +80,7 @@ public class AgenteController {
 		return "redirect:/administrador2";
 	}
 	
-	
+	////Interfaz de usuario pripietario/////
 	  @RequestMapping(value = "/welcome", method = RequestMethod.GET, headers = "Accept=application/json")
 	   public ModelAndView showWelcome(HttpServletRequest request, HttpServletResponse response) {
 	     ModelAndView mav = new ModelAndView("welcome"); 
@@ -90,7 +90,34 @@ public class AgenteController {
 	    mav.addObject("listOfAgentes", listOfAgentes);
 	     return mav;
 	   }
-	
+	  
+	  
+		@RequestMapping(value = "/editarAgenteUser/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+		public String updateAgenteUser(@PathVariable("id") int id,Model model) {
+			 model.addAttribute("agentes", this.agentesService.getAgentes(id));
+		        model.addAttribute("listOfAgentes", this.agentesService.getAllAgentes());
+		       // ModelAndView mav = new ModelAndView();
+		    	model.addAttribute("textomodal", "verdadero");
+		        return "welcome";
+		}
+	  
+	  
+	  
+	  
+		 @RequestMapping(value = "/addAgenteUser", method = RequestMethod.POST, headers = "Accept=application/json")
+		 	public String addCountry(@ModelAttribute("agentes") Agentes agentes) {	
+		 		if(agentes.getId()==0)
+		 		{
+		 		agentesService.addAgentes(agentes);
+		 		}
+		 		else
+		 		{	
+		 		agentesService.updateAgentes(agentes);
+		 		}
+		 		
+		 		return "redirect:/welcome";
+		 	}
+	////Interfaz de usuario pripietario (fin)/////
 	
 	
 	@RequestMapping(value = "/agente/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
