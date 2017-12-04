@@ -59,23 +59,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-           
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="welcome">  
-          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-            <span class="nav-link-text">${nombre}</span>
-          </a> 
-        </li> 
+            
         
         <hr>
         
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Mis Agentes">
           <a class="nav-link" href="welcome">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Mis Agentes</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Mapa">
           <a class="nav-link" href="welcome2">
           <i class="fa fa-map-o"  ></i>
             <span class="nav-link-text">Map</span>
@@ -127,74 +121,6 @@
       <!--cart inicio-->
   
       <div class="row">  
-       <div class="col-md-4 col-sm-6">
-             <div class="card-container manual-flip">
-                <div class="card">
-                    <div class="front">
-                        <div class="cover">
-                          <img class="" src="<c:url value="/resources/img/rotating_card_thumb.png"/>"/> 
-                        </div>
-                        <div class="user">
-                             <img class="img-circle" src="<c:url value="/resources/img/rotating_card_profile2.png"/>"/> 
-                        </div>
-                        <div class="content">
-                            <div class="main">
-                                <h3 class="name">La Merced</h3>
-                                <p class="profession">Bodega</p>
-                                <p class="text-center"></p>
-                            </div>
-                            <div class="footer">
-                                <button class="btn btn-simple" onclick="rotateCard(this)">
-                                    <i class="fa fa-mail-forward"></i> Ver Detalles
-                                </button>
-                            </div>
-                        </div>
-                    </div> <!-- end front panel -->
-                    <div class="back">
-                        <div class="header">
-                            <h5 class="motto">Detalles</h5>
-                        </div>
-                        <div class="content">
-                            <div class="main">
-                                <h4 class="text-center">La Merced</h4>
-                           
-                                  <table>
-                                   <tr>
-                                    <td height="10px"></td> 
-                                   </tr>               
-                                  <tr>
-                                    <td>Dirección :</td>
-                                    <td>Valle luz, calle 123 etap 2lt 10A</td> 
-                                  </tr> 
-                                  <tr>
-                                    <td>Distrito :</td>
-                                    <td>Santa Anita</td> 
-                                  </tr>
-                                   
-                                  <tr>
-                                    <td>Operatividad :</td>
-                                    
-                                  </tr>
-                                   <tr>  
-                                    <td><input type="radio" name="OpNegativo" > Activo</td>
-                                    <td><input type="radio" name="OpPositivo" > Inactivo</td>
-                                  </tr>
-                                  </table>  
-
-                            </div>
-                        </div>
-                        <div class="footer">
-                            <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
-                                <i class="fa fa-reply"></i> Back
-                            </button> 
-                              <button class="btn btn-secondary" rel="Find " title="Flip Card" onclick="">
-                                <i class="fa fa-pencil fa-fw"></i> Modificar
-                            </button> 
-                        </div>
-                    </div> <!-- end back panel -->
-                </div> <!-- end card -->
-            </div> <!-- end card-container -->
-        </div> <!-- end col sm 3 -->
         
         <!-- recarga todos los agentes en tarjetas-->
          <c:if test="${!empty listOfAgentes}">
@@ -392,9 +318,8 @@
           <div id="map"></div>
         </div>
       </div><br>
-      <p>Coordenadas: <input type="hidden" id="coords" />
-      <p>Latitud: <input type="hidden" id="lat" />
-      <p>Longitud: <input type="hidden" id="long" />
+      <p><input type="hidden" id="coords" />
+ 
        
         </div> 
       
@@ -413,11 +338,11 @@
 		</tr>
 		<tr>
 		  <td><form:label path="lat">lat:</form:label></td>
-          <td><form:input class="form-control" path="lat" size="30" maxlength="30"></form:input></td>
+          <td><form:input class="form-control" path="lat" id="lat" size="30" maxlength="30"></form:input></td>
 		</tr>
 		<tr>
 		  <td><form:label path="lng">lng:</form:label></td>
-          <td><form:input class="form-control" path="lng" size="30" maxlength="30"></form:input></td>
+          <td><form:input class="form-control" path="lng" id="long" size="30" maxlength="30"></form:input></td>
 		</tr>
 		<tr>
 		  <td><form:label path="tipo">tipo:</form:label></td>
@@ -426,11 +351,9 @@
 		<tr>
 		  <td><form:label path="sistema">sistema:</form:label></td>
           <td><form:input class="form-control" path="sistema" size="30" maxlength="30"></form:input></td>
+          <td><form:hidden path="seguridad"/></td>
 		</tr>
-		<tr>
-		  <td><form:label path="seguridad">seguridad:</form:label></td>
-          <td><form:input class="form-control" path="seguridad" size="30" maxlength="30"></form:input></td>
-		</tr>
+	 
 		<tr>
 		  <td><form:label path="horario">horario:</form:label></td>
           <td><form:input class="form-control" path="horario" size="30" maxlength="30"></form:input></td>
@@ -463,7 +386,7 @@
 </div>
 
 
-    <!-- Formulario de edit modal-->
+    <!-- Formulario de edit operatividad del agente en modal -->
    <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
   <div class="modal-dialog" role="document">
   

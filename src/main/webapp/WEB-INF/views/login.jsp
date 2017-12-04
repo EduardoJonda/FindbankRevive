@@ -9,7 +9,7 @@
     
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Login</title> 
-	<link rel="stylesheet" href="<c:url value="/resources/css/styles.css"/>"> 
+	<link rel="stylesheet" href="<c:url value="/resources/css/styles2.css"/>"> 
 	<link rel="stylesheet" href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css"/>">
 	<style type="text/css">
             .input-error { margin-bottom: 6px !important; }
@@ -20,7 +20,7 @@
 	<div class="fondonav">
 	<nav class="fondonav">
 		<ul class="">
-			<li><a href="">Inicio</a></li>
+			<li><a href="/c15">Inicio</a></li>
 		</ul>
 	</nav>
 	</div> 
@@ -41,7 +41,7 @@
 			<h2 class="login">Login</h2>
 			<hr align="center"></hr>
 			
-			 <p><td><h3>${message}</h3></td></p></br>
+			 <p><td><h3>${message}</h3></td></p> 
 					
 		</div> 
 		

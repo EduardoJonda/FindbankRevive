@@ -18,20 +18,17 @@
   <meta name="author" content="">
   <title>Administrador de Find Bank</title>
   
-     <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.3.3.7.min.css"/>">
-	
-	<script src="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>"></script> 
-	 <script src="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>"></script>
+       
 	
   <!-- Bootstrap core CSS-->
-   <link rel="stylesheet" href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>">
   <!-- Custom fonts for this template-->
   <link rel="stylesheet" href="<c:url value="/resources/vendor/font-awesome/css/font-awesome.min.css"/>">
   <!-- Custom styles for this template-->
   <link rel="stylesheet" href="<c:url value="/resources/css/sb-admin.css"/>">
   <style>
   .modal-content {
-  margin-top: 200px;
+  margin-top: 100px;
   }
   </style>
 </h:head>
@@ -77,15 +74,13 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      <ol >
-    <br/> <br/>
-      </ol>
+    
        <ol >
     <br/> <br/>
       </ol>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="/administrador"   style="font-size:15px;"><strong>Find Bank</strong></a>
+          <a href="/c15/administrador"   style="font-size:15px;"><strong>Find Bank</strong></a>
         </li>
         <li class="breadcrumb-item active"  style="font-size:15px;"><strong>Agentes</strong></li>
       </ol>
@@ -255,15 +250,17 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
+    
     <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
-    <script src="<c:url value="/resources/vendor/popper/popper.min.js"/>"></script>
-    <script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
+         <script src="<c:url value="https://code.jquery.com/jquery-3.2.1.slim.min.js"/>"></script>
+    <script src="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"/>"></script>
+         <script src="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"/>"></script>
+   
      <!-- Core plugin JavaScript-->
      <script src="<c:url value="/resources/vendor/jquery/jquery-easing/jquery.easing.min.js"/>"></script>
     <!-- Custom scripts for all pages-->
     <script src="<c:url value="/resources/js/sb-admin.min.js"/>"></script> 
    
-<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>  
 <script type="text/javascript">
  
 if ($("#txt").val()=='verdadero'){

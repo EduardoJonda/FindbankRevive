@@ -5,18 +5,18 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
+<h:head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Find Bank</title> 
-	
+	<title>Find Bank</title>  
 	<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.3.3.7.min.css"/>">
-	
+	 
+	 
 	<script src="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>"></script> 
 	 <script src="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>"></script>
 	 
 	 <link rel="stylesheet" href="<c:url value="/resources/css/styles.css"/>">
 	
-	   
+	     
 </h:head>
 
 	<div class="fondonav1">

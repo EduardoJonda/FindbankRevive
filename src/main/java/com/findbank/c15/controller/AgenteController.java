@@ -100,9 +100,7 @@ public class AgenteController {
 		    	model.addAttribute("textomodal", "verdadero");
 		        return "welcome";
 		}
-	  
-	  
-	  
+	   
 	  
 		 @RequestMapping(value = "/addAgenteUser", method = RequestMethod.POST, headers = "Accept=application/json")
 		 	public String addCountry(@ModelAttribute("agentes") Agentes agentes) {	

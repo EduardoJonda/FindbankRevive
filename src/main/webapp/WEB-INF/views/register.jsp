@@ -16,7 +16,7 @@
 	<div class="fondonav">
 	<nav class="fondonav">
 		<ul class="">
-			<li><a href="">Inicio</a></li>
+			<li><a href="/c15">Inicio</a></li>
 		</ul>
 	</nav>
 	</div> 
